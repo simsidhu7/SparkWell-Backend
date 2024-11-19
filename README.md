@@ -51,9 +51,9 @@ There will be 2 pages to start. The home page will allow a user to input their m
 
 **Provide visuals of your app's screens. You can use pictures of hand-drawn sketches, or wireframing tools like Figma.**
 
-![Screenshot of the Home Page Mockup](./Mockups/HomePage.png)
+![Screenshot of the Home Page Mockup](/Mockups/HomePage.png)
 
-![Screenshot of the About Page Mockup](./Mockups/About.png)
+![Screenshot of the About Page Mockup](/Mockups/About.png)
 
 ### Data
 
