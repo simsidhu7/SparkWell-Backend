@@ -5,7 +5,7 @@ const router = express.Router();
 
 const journalEntriesFile = './data/journalentries.json';
 
-router.get("/", (req,res) => {
+router.get("/journalentries", (req,res) => {
     fs.readFile(journalEntriesFile, "utf-8", (err,data)=>{
         if(err){
             return res.status(500).json({error:"Cannot read journal entries"});

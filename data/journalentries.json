@@ -2,7 +2,11 @@
   {
     "id": "2329dfsd212312-434343-ef3434",
     "entry": "Today was a perfect day.",
-    "timestamp":"2024-11-20"
- 
+    "timestamp": "2024-11-20"
+  },
+  {
+    "id": "d1a39432-28f3-4dd3-8097-4732967a83df",
+    "entry": "This is a test journal entry.",
+    "timestamp": "2024-11-25"
   }
 ]
