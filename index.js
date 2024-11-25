@@ -40,7 +40,7 @@ async function getToken() {
 
 async function getMoodPlaylist(accessToken, mood) {
   const response = await fetch(
-    `https://api.spotify.com/v1/?q=${encodeURIComponent(mood)}&type=playlist`,
+    `https://api.spotify.com/v1/search?q=${encodeURIComponent(mood)}&type=playlist`,
     {
       method: "GET",
       headers: { Authorization: `Bearer ${accessToken}`,
@@ -56,8 +56,8 @@ return data.playlists.items.map((playlist)=>
 }
 
 //api endpoint for mood-based playlist request
-app.post("/mood-playlist", async(req,res)=>{
-    const {mood}=req.body;
+app.get("/mood-playlist", async(req,res)=>{
+    const {mood}=req.query;
     if(!mood){
         return res.status(400).json({error:"Mood is a required selection."});
     }
