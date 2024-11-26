@@ -39,46 +39,6 @@ async function getToken() {
     console.error("Error fetching access token:", error.response.data);
   }
 }
-// send a post request to Spotify's token endpoint
-// async function getToken() {
-//   const response = await fetch("https://accounts.spotify.com/api/token", {
-//     method: "POST",
-//     body: new URLSearchParams({
-//       //app level authentication
-//       grant_type: "client_credentials",
-//     }),
-//     headers: {
-//       //request body is URL-encoded
-//       "Content-Type": "application/x-www-form-urlencoded",
-//       Authorization:
-//         "Basic " + (new Buffer.from(clientId + ":" + clientSecret).toString("base64")),
-//     },
-//   });
-
-//   const data = await response.json();
-//   return await response.json();
-// }
-
-// async function getToken(){
-//     var authOptions = {
-//         url: 'https://accounts.spotify.com/api/token',
-//         headers: {
-//           'Authorization': 'Basic ' + (new Buffer.from(clientId + ':' + clientSecret).toString('base64'))
-//         },
-//         form: {
-//           grant_type: 'client_credentials'
-//         },
-//         json: true
-//       };
-
-//       request.post(authOptions, function(error, response, body) {
-//         if (!error && response.statusCode === 200) {
-
-//           var token = body.access_token;
-//           console.log(token);
-//         }
-//       });
-// }
 
 async function getMoodPlaylist(accessToken, mood) {
   const response = await fetch(
