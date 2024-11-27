@@ -50,13 +50,17 @@ async function getMoodPlaylist(accessToken, mood) {
       headers: { Authorization: `Bearer ${accessToken}` },
     }
   );
-  console.log(response);
 
   const data = await response.json();
-  return data.playlists.items.map((playlist) => ({
+console.log(data.playlists.items)
+  return data.playlists.items.map((playlist) => {
+    if (!playlist){
+        return
+    }
+   return {
     name: playlist.name,
     url: playlist.external_urls.spotify,
-  }));
+}});
 }
 
 //api endpoint for mood-based playlist request
