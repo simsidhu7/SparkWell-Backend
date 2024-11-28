@@ -1,5 +1,12 @@
 # Project Title: SparkWell
 
+## Dependencies/Installs
+
+**What should be installed?**
+Front-End: 
+npm install sweetalert2
+npm install @mui/material @emotion/react @emotion/styled
+
 ## Overview
 
 **What is your app? Give a brief description in a couple of sentences.**
