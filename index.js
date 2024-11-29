@@ -14,7 +14,7 @@ app.use(express.json());
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-const redirectUrl = "http://localhost:8080/callback";
+const redirectUrl = process.env.SPOTIFY_CALLBACK;
 
 app.use("/", journalEntries);
 
