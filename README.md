@@ -3,9 +3,18 @@
 ## Dependencies/Installs
 
 **What should be installed?**
-Front-End: 
-npm install sweetalert2
-npm install @mui/material @emotion/react @emotion/styled
+Front-End:
+npm install
+Create a .env file with the following to set up environment variables:
+VITE_BASE_URL=http://localhost:8080
+
+Back-End:
+npm install
+Create a .env file with the following structure to set up environment variables:
+SPOTIFY_CLIENT_ID=your_spotify_clientID
+SPOTIFY_CLIENT_SECRET=your_spotify_clientSecret
+SPOTIFY_CALLBACK=https://sparkwell-backend.onrender.com/callback
+PORT=8080
 
 ## Overview
 
