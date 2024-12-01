@@ -63,7 +63,6 @@ console.log(data.playlists.items)
 }});
 }
 
-//api endpoint for mood-based playlist request
 app.get("/mood-playlist", async (req, res) => {
   const { mood } = req.query;
   if (!mood) {
