@@ -20,7 +20,7 @@ PORT=8080
 
 **What is your app? Give a brief description in a couple of sentences.**
 
-SparkWell - An app that sparks productivity and wellness, and provides music recommendations based on a user's mood.
+SparkWell - An app that sparks productivity and wellness, and provides music recommendations based on a user's mood. To gain access to the deployed application, you can visit sparkwell.netlify.app
 
 ### Problem Space
 
