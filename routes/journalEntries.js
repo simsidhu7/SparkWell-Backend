@@ -1,47 +1,66 @@
 import express from "express";
-import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 const router = express.Router();
+import knex from "knex";
+import config from "../knexfile.js";
+
+const db = knex(config);
 
 const journalEntriesFile = "./data/journalentries.json";
 
-router.get("/journalentries", (req, res) => {
-  fs.readFile(journalEntriesFile, "utf-8", (err, data) => {
-    if (err) {
-      return res.status(500).json({ error: "Cannot read journal entries" });
-    }
-    const journalEntries = JSON.parse(data || "[]");
-    res.json(journalEntries);
-  });
+router.get("/journalentries", async(req, res) => {
+
+  try{
+    const items = await db.select('*').from('journal entries');
+
+    res.json(items);
+  }
+  catch(error){
+    res.status(500).json({error:'Database query failed'});
+
+  }
+
+  // fs.readFile(journalEntriesFile, "utf-8", (err, data) => {
+  //   if (err) {
+  //     return res.status(500).json({ error: "Cannot read journal entries" });
+  //   }
+  //   const journalEntries = JSON.parse(data || "[]");
+  //   res.json(journalEntries);
+  // });
 });
 
-router.post("/:id", (req, res) => {
+router.post("/:id", async(req, res) => {
   const { entry } = req.body;
 
-  const newEntry = {
-    id: uuidv4(),
+try{
+  const newEntry = await db('journal entries').insert
+  ({id: uuidv4(),
     entry,
-    timestamp: new Date().toISOString().split("T")[0],
-  };
+    timestamp: new Date().toISOString().split("T")[0],})
+} catch (error){
+  res.status(500).json({error: "Failed to add journal entry"});
+}
 
-  fs.readFile(journalEntriesFile, "utf-8", (err, data) => {
-    if (err) {
-      return res.status(500).json({ error: "Cannot read journal entry." });
-    }
-    const journalEntries = JSON.parse(data || "[]");
-    journalEntries.push(newEntry);
 
-    fs.writeFile(
-      journalEntriesFile,
-      JSON.stringify(journalEntries, null, 2),
-      (err) => {
-        if (err) {
-          return res.status(500).json({ error: "Cannot save journal entry." });
-        }
-        res.status(201).json(newEntry);
-      }
-    );
-  });
+
+  // fs.readFile(journalEntriesFile, "utf-8", (err, data) => {
+  //   if (err) {
+  //     return res.status(500).json({ error: "Cannot read journal entry." });
+//   //   }
+//     const journalEntries = JSON.parse(data || "[]");
+//     journalEntries.push(newEntry);
+
+//     fs.writeFile(
+//       journalEntriesFile,
+//       JSON.stringify(journalEntries, null, 2),
+//       (err) => {
+//         if (err) {
+//           return res.status(500).json({ error: "Cannot save journal entry." });
+//         }
+//         res.status(201).json(newEntry);
+//       }
+//     );
+//   });
 });
 
 export default router;
