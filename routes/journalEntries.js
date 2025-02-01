@@ -16,7 +16,7 @@ console.log(items)
     res.json(items);
 
   } catch (error) {
-    res.status(500).json({ error: "Database query failed." });
+    res.status(500).json({ error});
   }
 
   // fs.readFile(journalEntriesFile, "utf-8", (err, data) => {
