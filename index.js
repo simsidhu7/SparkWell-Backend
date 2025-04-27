@@ -5,7 +5,6 @@ import journalEntries from "./routes/journalEntries.js";
 import axios from "axios";
 import qs from "qs";
 
-
 const app = express();
 const PORT = process.env.PORT;
 
